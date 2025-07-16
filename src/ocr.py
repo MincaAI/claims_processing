@@ -28,7 +28,7 @@ def perform_ocr(pdf_bytes: bytes) -> ExtractionResult | None:
         st.error(f"Failed to create Gemini client: {e}")
         return None
 
-    model = "gemini-1.5-flash-latest"
+    model = "gemini-2.5-flash"
 
     prompt = """
     You are an expert AI data extraction assistant specializing in financial documents.
