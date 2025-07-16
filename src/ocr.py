@@ -17,7 +17,7 @@ def perform_ocr(pdf_bytes: bytes) -> ExtractionResult | None:
             "GEMINI_API_KEY not found in Streamlit secrets. "
             "Using the provided key as a fallback. This is not secure for production."
         )
-        api_key = ""  # User-provided fallback
+        api_key = "AIzaSyCV5VRH9TxTh95C36bEMMy7IqepIQklHX8"  # User-provided fallback
 
     os.environ["GEMINI_API_KEY"] = api_key
 
