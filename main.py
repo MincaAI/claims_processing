@@ -3,6 +3,14 @@ import pandas as pd
 from src.ocr import perform_ocr
 
 
+hide_github_icon = """
+    <style>
+        .css-1dp5vir.e1tzin5v3 {visibility: hidden;} /* GitHub link in top right */
+        footer {visibility: hidden;}  /* Streamlit footer */
+    </style>
+"""
+st.markdown(hide_github_icon, unsafe_allow_html=True)
+
 st.title("Claims Processing")
 
 uploaded_files = st.file_uploader(
