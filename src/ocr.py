@@ -45,14 +45,14 @@ def perform_ocr(pdf_bytes: bytes) -> ExtractionResult | None:
     4.  If a specific field cannot be found in the document, you MUST return an empty string ("") for that field. Do not guess or invent information.
 
     **Field Extraction Guide (with Thai Keywords):**
-    -   **payee_account_name**: The name of the person or company to be paid. Look for English terms like 'Payee', 'Beneficiary', 'Account Name', or Thai terms like 'ชื่อผู้รับเงิน', 'ชื่อบัญชี'.
-    -   **net_amount**: The subtotal amount before any taxes are applied. Look for English terms like 'Subtotal', 'Net Amount', or Thai terms like 'ยอดสุทธิก่อนภาษี', 'มูลค่าสินค้า', 'จำนวนเงิน'.
-    -   **vat_amount**: The Value Added Tax (VAT) amount. Look for English terms like 'VAT', 'GST', or Thai terms like 'ภาษีมูลค่าเพิ่ม', 'VAT 7%'.
+    -   **payee_account_name**: The name of the person or company to be paid. Look for English terms like 'Payee', 'Beneficiary', 'Account Name', or Thai terms like 'ชื่อผู้รับเงิน', 'ชื่อบัญชี'. Should be in the format "8699.40".
+    -   **net_amount**: The subtotal amount before any taxes are applied. Look for English terms like 'Subtotal', 'Net Amount', or Thai terms like 'ยอดสุทธิก่อนภาษี', 'มูลค่าสินค้า', 'จำนวนเงิน'. Should be in the format "8699.40".
+    -   **vat_amount**: The Value Added Tax (VAT) amount. Look for English terms like 'VAT', 'GST', or Thai terms like 'ภาษีมูลค่าเพิ่ม', 'VAT 7%'. Should be in the format "8699.40".
     -   **gross_amount**: The final, total amount to be paid. Look for English terms like 'Total', 'Gross Amount', 'Grand Total', or Thai terms like 'ยอดรวมทั้งสิ้น', 'รวมเป็นเงิน', 'ยอดสุทธิ'.
     -   **tax_invoice_number**: The unique identifier for the tax invoice. Look for English labels like 'Tax Invoice No.', 'TIN', or Thai terms like 'เลขที่ใบกำกับภาษี'. If not present, check for a general invoice number.
     -   **tax_invoice_date**: The date the tax invoice was issued. Look for English 'Tax Invoice Date' or Thai 'วันที่ใบกำกับภาษี', or a general 'Date' field associated with the invoice.
     -   **invoice_number**: The unique number for the invoice itself. Look for Thai 'เลขที่ใบแจ้งหนี้' or 'เลขที่'. If only one invoice number is on the document, use it for both this field and `tax_invoice_number`.
-    -   **invoice_date**: The date the invoice was issued. Look for Thai 'วันที่'. If only one date is on the document, use it for both this field and `tax_invoice_date`.
+    -   **invoice_date**: The date the invoice was issued. Look for Thai 'วันที่'. If only one date is on the document, use it for both this field and `tax_invoice_date`. Should be in the format DD/MM/YYYY.
 
     Please process the document and provide the extracted data in the specified JSON format.
     """
